@@ -1,5 +1,5 @@
 // layout
-import Layout from "@/components/layout";
+import Layout from "@/components/Layout";
 
 // link
 import Link from "next/link";
