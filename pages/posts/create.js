@@ -9,7 +9,7 @@ import Head from "next/head";
 import Router from "next/router";
 
 // import layout
-import Layout from "@/components/layout";
+import Layout from "@/components/Layout";
 
 // import axios
 import axios from "axios";
