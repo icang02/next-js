@@ -14,8 +14,12 @@ import { useState } from "react";
 
 // fetch with "getServerSideProps"
 export async function getServerSideProps() {
+  // URL API
+  // const URL = "http://127.0.0.1:8000";
+  const URL = "https://api.ilmifaizan.web.id";
+
   // http request
-  const req = await axios.get(`${process.env.URL}/api/posts`);
+  const req = await axios.get(`${URL}/api/posts`);
   const res = await req.data.data.resource.data;
 
   return {
@@ -26,6 +30,10 @@ export async function getServerSideProps() {
 }
 
 export default function PostIndex(props) {
+  // URL API
+  // const URL = "http://127.0.0.1:8000";
+  const URL = "https://api.ilmifaizan.web.id";
+
   // destruct
   const { posts } = props;
 
@@ -44,13 +52,13 @@ export default function PostIndex(props) {
   const deletePost = async (id) => {
     if (confirm("Hapus data?")) {
       // sending
-      await axios.delete(`http://127.0.0.1:8000/api/posts/${id}`, {
+      await axios.delete(`${URL}/api/posts/${id}`, {
         onprogress: setLoading(true),
       });
 
       // refresh data
-      refreshData();
       setLoading(false);
+      refreshData();
     }
   };
 
@@ -85,7 +93,7 @@ export default function PostIndex(props) {
                           <td>{i + 1}</td>
                           <td className="text-center">
                             <img
-                              src={`http://127.0.0.1:8000/storage/posts/${post.image}`}
+                              src={`${URL}/storage/posts/${post.image}`}
                               className="rounded-3"
                               alt="gambar"
                               width={150}

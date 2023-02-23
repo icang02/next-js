@@ -14,8 +14,12 @@ import axios from "axios";
 
 //fetch with "getServerSideProps"
 export async function getServerSideProps({ params }) {
+  // URL API
+  // const URL = "http://127.0.0.1:8000";
+  const URL = "https://api.ilmifaizan.web.id";
+
   //http request
-  const req = await axios.get(`http://127.0.0.1:8000/api/posts/${params.id}`);
+  const req = await axios.get(`${URL}/api/posts/${params.id}`);
   const res = await req.data.data.resource;
 
   return {
@@ -26,6 +30,10 @@ export async function getServerSideProps({ params }) {
 }
 
 export default function PostEdit(props) {
+  // URL API
+  // const URL = "http://127.0.0.1:8000";
+  const URL = "https://api.ilmifaizan.web.id";
+
   //destruct
   const { post } = props;
 
@@ -78,7 +86,7 @@ export default function PostEdit(props) {
 
     //send data to server
     await axios
-      .post(`http://127.0.0.1:8000/api/posts/${post.id}`, formData, {
+      .post(`${URL}/api/posts/${post.id}`, formData, {
         onUploadProgress: setLoading(true),
       })
       .then(() => {
@@ -170,7 +178,7 @@ export default function PostEdit(props) {
                       className="btn btn-primary me-1"
                     >
                       {loading && (
-                        <span class="spinner-border spinner-border-sm text-light me-1"></span>
+                        <span className="spinner-border spinner-border-sm text-light me-1"></span>
                       )}
                       Update Post
                     </button>

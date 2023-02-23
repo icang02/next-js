@@ -15,6 +15,10 @@ import Layout from "@/components/Layout";
 import axios from "axios";
 
 export default function PostCreate() {
+  // URL API
+  // const URL = "http://127.0.0.1:8000";
+  const URL = "https://api.ilmifaizan.web.id";
+
   //state
   const [image, setImage] = useState("");
   const [title, setTitle] = useState("");
@@ -63,7 +67,7 @@ export default function PostCreate() {
 
     //send data to server
     await axios
-      .post(`http://localhost:8000/api/posts`, formData, {
+      .post(`${URL}/api/posts`, formData, {
         onUploadProgress: setLoading(true),
       })
       .then(() => {
@@ -155,7 +159,7 @@ export default function PostCreate() {
                       className="btn btn-primary me-1"
                     >
                       {loading && (
-                        <span class="spinner-border spinner-border-sm text-light me-1"></span>
+                        <span className="spinner-border spinner-border-sm text-light me-1"></span>
                       )}
                       New Post
                     </button>
